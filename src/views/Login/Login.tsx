@@ -13,7 +13,7 @@ export default function Login() {
   if (location.href.includes('code=')) {
     hasCode.current = true
     const originQuery: any = location.search!.split('?')[1].split('&')
-    const queryArr = originQuery.map((item) => item.split('='))
+    const queryArr = originQuery.map((item: any) => item.split('='))
     const query: any = new Map(queryArr)
     codeGetToken({
       code: query.get('code')
@@ -38,7 +38,7 @@ export default function Login() {
       ['response_type', 'code']
     ])
     let query = ''
-    for (let key of paramsMap.keys()) {
+    for (const key of paramsMap.keys()) {
       query += `${key}=${paramsMap.get(key)}&`
     }
     query = query.slice(0, -1)
