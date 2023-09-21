@@ -2,7 +2,7 @@ import { Button, Space } from 'antd'
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
 import './style.less'
 
-function HomePage() {
+const RouterPage: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [searchParams] = useSearchParams()
@@ -31,4 +31,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default RouterPage
