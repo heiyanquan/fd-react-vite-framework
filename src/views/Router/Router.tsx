@@ -1,15 +1,20 @@
 import { Button, Space } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
 import './style.less'
 
 function HomePage() {
   const navigate = useNavigate()
+  const location = useLocation()
+  const [searchParams] = useSearchParams()
+
+  console.log('location', location)
+  console.log('searchParams', searchParams.get('user'))
 
   const toPage = () => {
-    navigate('/router?user=name1', {
+    navigate('/home', {
       state: {
         params: {
-          id: 1
+          id: 2
         }
       }
     })

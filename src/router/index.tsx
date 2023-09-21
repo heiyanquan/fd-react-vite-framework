@@ -6,6 +6,7 @@ import { AppstoreOutlined } from '@ant-design/icons'
 const Layout = lazy(() => import('@/views/Layout'))
 const Login = lazy(() => import('@/views/Login/Login'))
 const Home = lazy(() => import('@/views/Home/Home'))
+const Router = lazy(() => import('@/views/Router/Router'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -20,7 +21,7 @@ function defineConfigs<T extends string>(configs: Array<ConfigItem<T>>) {
 const menuNames = defineConfigs([
   {
     key: 'sub1',
-    label: '用户管理',
+    label: '菜单一',
     icon: <AppstoreOutlined />
   }
 ])
@@ -35,9 +36,15 @@ const subRoutes: Array<{ belong: menuType | ''; name: string; path: string; elem
   },
   {
     belong: 'sub1',
-    name: '账号管理',
+    name: 'home',
     path: 'home',
     element: withLoading(<Home />)
+  },
+  {
+    belong: 'sub1',
+    name: 'router',
+    path: 'router',
+    element: withLoading(<Router />)
   }
 ]
 
