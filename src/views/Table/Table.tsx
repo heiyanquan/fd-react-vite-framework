@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './style.less'
 import ChildTable from './ChildTable'
 import { usePage } from '@/hooks/useTable'
 import { Button } from 'antd'
-import { getPlanningDataSheetList } from '@/api/planningOverview/dataSheet'
+import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
 
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
@@ -15,18 +15,18 @@ const TablePage: React.FC = () => {
     },
     {
       title: '表名（中文）',
-      dataIndex: 'cn_table_name',
-      key: 'cn_table_name'
+      dataIndex: 'name',
+      key: 'name'
     },
     {
-      title: '时间',
-      dataIndex: 'planned_completion_date',
-      key: 'planned_completion_date',
-      type: 'datetime'
+      title: '描述',
+      dataIndex: 'description',
+      key: 'description'
     }
   ]
+
   const doRequest = () => {
-    return getPlanningDataSheetList({
+    return getPlanningSubclassList({
       page: pagination.current,
       page_size: pagination.pageSize
     }).then((res) => {

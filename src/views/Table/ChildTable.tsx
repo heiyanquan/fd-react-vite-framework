@@ -20,7 +20,7 @@ const ChildTable = (props: any) => {
 
   return (
     <>
-      <Table columns={columns} {...rest} pagination={false} />
+      <Table columns={columns} {...rest} pagination={false}></Table>
       <div style={style}>
         <Pagination {...pagination} />
       </div>
