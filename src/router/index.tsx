@@ -7,6 +7,7 @@ const Layout = lazy(() => import('@/views/Layout'))
 const Login = lazy(() => import('@/views/Login/Login'))
 const Home = lazy(() => import('@/views/Home/Home'))
 const Router = lazy(() => import('@/views/Router/Router'))
+const Table = lazy(() => import('@/views/Table/Table'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -45,6 +46,12 @@ const subRoutes: Array<{ belong: menuType | ''; name: string; path: string; elem
     name: 'router',
     path: 'router',
     element: withLoading(<Router />)
+  },
+  {
+    belong: 'sub1',
+    name: 'table',
+    path: 'table',
+    element: withLoading(<Table />)
   }
 ]
 
