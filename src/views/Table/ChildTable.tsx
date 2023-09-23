@@ -9,7 +9,7 @@ interface ColumnsType {
   render?: (text: string) => JSX.Element
 }
 const ChildTable = (props: any) => {
-  const { pagination, onChange, total, columns, ...rest } = props
+  const { pagination, columns, ...rest } = props
   const style = {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -29,7 +29,7 @@ const ChildTable = (props: any) => {
     <>
       <Table columns={columns} {...rest} pagination={false}></Table>
       <div style={style}>
-        <Pagination {...pagination} onChange={onChange} total={total} />
+        <Pagination {...pagination} />
       </div>
     </>
   )
