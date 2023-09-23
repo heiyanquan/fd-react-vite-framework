@@ -38,7 +38,9 @@ export const usePage: any = (doRequest: () => Promise<any>) => {
 
   useEffect(() => {
     doRequest().then((res) => {
-      setTotal(res.total)
+      if (typeof res === 'object') {
+        setTotal(res.total)
+      }
     })
   }, [pagination])
 
