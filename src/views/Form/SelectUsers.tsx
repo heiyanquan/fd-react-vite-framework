@@ -1,16 +1,22 @@
+import { useState, memo, useEffect, useMemo } from 'react'
 import { Select } from 'antd'
+import debounce from 'lodash/debounce'
 import { getAllUserList } from '@/api/common'
-import { useState, memo, useEffect, useCallback } from 'react'
 
+interface Page {
+  page: number
+  page_size: number
+}
 const ChildTable = (props: any) => {
-  const { options, value } = props
+  const { options, value, ...rest } = props
   const [userList, setuserList] = useState<any[]>([])
   const [keywords, setkeywords] = useState<string | undefined>(undefined)
-  const [pagination, setPagination] = useState<any>({
+  const [pagination, setPagination] = useState<Page>({
     page: 1,
     page_size: 10
   })
   const [localValue, setlocalValue] = useState<string | number | undefined>(undefined)
+  const debounceTimeout = 400
 
   const callList = () => {
     return getAllUserList({
@@ -18,7 +24,6 @@ const ChildTable = (props: any) => {
       ...pagination
     }).then((res) => {
       if (pagination.page === 1) {
-        console.log(22, res)
         setuserList(res)
       } else {
         setuserList((list) => [...list, ...res])
@@ -35,19 +40,27 @@ const ChildTable = (props: any) => {
       })
     }
   }
-  const handleSearch = (newValue: string) => {
-    setkeywords(newValue)
-    setPagination({
-      ...pagination,
-      page: 1
-    })
-  }
+
+  const handleSearch = useMemo(() => {
+    const loadOptions = (newValue: string) => {
+      setkeywords(newValue)
+      setPagination((pagi) => ({
+        ...pagi,
+        page: 1
+      }))
+    }
+
+    return debounce(loadOptions, debounceTimeout)
+  }, [debounceTimeout])
+
   const focus = () => {
-    setlocalValue('')
     setPagination({
       page: 1,
       page_size: 10
     })
+  }
+  const blur = () => {
+    setuserList(options)
   }
 
   useEffect(() => {
@@ -56,7 +69,6 @@ const ChildTable = (props: any) => {
 
   useEffect(() => {
     if (options && options.length) {
-      console.log(99)
       setuserList(options)
     }
   }, [options])
@@ -74,7 +86,8 @@ const ChildTable = (props: any) => {
       onPopupScroll={getMoreList}
       onSearch={handleSearch}
       onFocus={focus}
-      {...props}></Select>
+      onBlur={blur}
+      {...rest}></Select>
   )
 }
 
