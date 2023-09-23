@@ -5,6 +5,7 @@ import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
 import { getDataSheetAttributes, getDataSheetPlanningDimension, getDataMaintenanceMode } from '@/utils/type'
 import './style.less'
 import SelectUsers from './SelectUsers'
+import HsAdminSelect from '@/components/HsAdminSelect'
 
 const { TextArea } = Input
 
@@ -46,7 +47,6 @@ function Edit() {
       }
     ])
   }
-  const filterOption: any = (input: string, option: { label: string; value: string }) => (option?.label ?? '').includes(input)
 
   useEffect(() => {
     getPlanningSubclassList({
@@ -83,11 +83,11 @@ function Edit() {
       </Form.Item>
 
       <Form.Item label="所属数据子类" name="sub_topic_domain_id" rules={[{ required: true, message: '请选择所属数据子类' }]}>
-        <Select placeholder="请选择所属数据子类" allowClear options={subclassOptions} showSearch filterOption={filterOption}></Select>
+        <HsAdminSelect placeholder="请选择所属数据子类" options={subclassOptions}></HsAdminSelect>
       </Form.Item>
 
       <Form.Item label="表类型" name="attributes" rules={[{ required: true, message: '请选择表类型' }]}>
-        <Select placeholder="请选择表类型" onChange={onChange} allowClear options={getDataSheetAttributes().slice(1)}></Select>
+        <HsAdminSelect placeholder="请选择表类型" onChange={onChange} options={getDataSheetAttributes().slice(1)}></HsAdminSelect>
       </Form.Item>
 
       <Form.Item label="规划负责人" name="plan_lead_id" rules={[{ required: true, message: '请选择规划负责人' }]}>
@@ -99,11 +99,11 @@ function Edit() {
       </Form.Item>
 
       <Form.Item label="维护方式" name="maintenance_method" rules={[{ required: true, message: '请选择维护方式' }]}>
-        <Select placeholder="请选择维护方式" allowClear mode="multiple" options={getDataMaintenanceMode()}></Select>
+        <HsAdminSelect placeholder="请选择维护方式" mode="multiple" options={getDataMaintenanceMode()}></HsAdminSelect>
       </Form.Item>
 
       <Form.Item label="规划维度" name="planning_dimension" rules={[{ required: true, message: '请选择规划维度' }]}>
-        <Select placeholder="请选择规划维度" allowClear options={getDataSheetPlanningDimension()} disabled></Select>
+        <HsAdminSelect placeholder="请选择规划维度" options={getDataSheetPlanningDimension()} disabled></HsAdminSelect>
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

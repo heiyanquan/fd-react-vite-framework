@@ -7,7 +7,7 @@ interface Page {
   page: number
   page_size: number
 }
-const ChildTable = (props: any) => {
+const SelectUsers = (props: any) => {
   const { options, value, ...rest } = props
   const [userList, setuserList] = useState<any[]>([])
   const [keywords, setkeywords] = useState<string | undefined>(undefined)
@@ -49,7 +49,6 @@ const ChildTable = (props: any) => {
         page: 1
       }))
     }
-
     return debounce(loadOptions, debounceTimeout)
   }, [debounceTimeout])
 
@@ -91,4 +90,4 @@ const ChildTable = (props: any) => {
   )
 }
 
-export default memo(ChildTable)
+export default memo(SelectUsers)
