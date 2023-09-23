@@ -3,6 +3,7 @@ import './style.less'
 import { usePage } from '@/hooks/useTable'
 import { Button, Table, Pagination } from 'antd'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
+// import ChildTable from './ChildTable'
 
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
@@ -34,14 +35,14 @@ const TablePage: React.FC = () => {
       return res
     })
   }
-  const { pagination, total, onChange } = usePage(doRequest)
+  const { pagination } = usePage(doRequest)
 
   return (
     <>
       <Button type="primary">reset Button</Button>
       <br />
       <Table columns={columns} rowKey="id" dataSource={dataSource} pagination={false}></Table>
-      <Pagination {...pagination} total={total} onChange={onChange} />
+      <Pagination {...pagination} />
     </>
   )
 }

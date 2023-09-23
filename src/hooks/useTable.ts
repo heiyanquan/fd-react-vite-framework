@@ -42,5 +42,16 @@ export const usePage: any = (doRequest: () => Promise<any>) => {
     })
   }, [pagination])
 
-  return { pagination, total, setPagination, setTotal, onChange, resetPage }
+  return {
+    pagination: {
+      ...pagination,
+      total,
+      onChange
+    },
+    total,
+    setPagination,
+    setTotal,
+    onChange,
+    resetPage
+  }
 }
