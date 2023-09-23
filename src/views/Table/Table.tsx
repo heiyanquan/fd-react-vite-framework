@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import './style.less'
-import ChildTable from './ChildTable'
 import { usePage } from '@/hooks/useTable'
-import { Button } from 'antd'
+import { Button, Table, Pagination } from 'antd'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
 
 const TablePage: React.FC = () => {
@@ -26,6 +25,7 @@ const TablePage: React.FC = () => {
   ]
 
   const doRequest = () => {
+    console.log('doRequest', pagination)
     return getPlanningSubclassList({
       page: pagination.current,
       page_size: pagination.pageSize
@@ -34,19 +34,14 @@ const TablePage: React.FC = () => {
       return res
     })
   }
-  const { pagination, resetPage } = usePage(doRequest)
-
-  function reset() {
-    resetPage()
-  }
+  const { pagination, total, onChange } = usePage(doRequest)
 
   return (
     <>
-      <Button type="primary" onClick={reset}>
-        reset Button
-      </Button>
+      <Button type="primary">reset Button</Button>
       <br />
-      <ChildTable dataSource={dataSource} columns={columns} rowKey="id" pagination={pagination} />
+      <Table columns={columns} rowKey="id" dataSource={dataSource} pagination={false}></Table>
+      <Pagination {...pagination} total={total} onChange={onChange} />
     </>
   )
 }

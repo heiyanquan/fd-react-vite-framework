@@ -1,14 +1,21 @@
 import { hsHandleTableDate, hsHandleTableDateTime, hsHandleTableRender } from '@/utils/table'
 import { Table, Pagination } from 'antd'
 
+interface ColumnsType {
+  title: string
+  dataIndex: string
+  key: string
+  type?: string
+  render?: (text: string) => JSX.Element
+}
 const ChildTable = (props: any) => {
-  const { pagination, columns, ...rest } = props
+  const { pagination, onChange, total, columns, ...rest } = props
   const style = {
     display: 'flex',
     justifyContent: 'flex-end',
     marginTop: 16
   }
-  columns?.forEach((item) => {
+  columns?.forEach((item: ColumnsType) => {
     if (item.type === 'date') {
       item.render = (text: string) => <span>{hsHandleTableDate(text)}</span>
     } else if (item.type === 'datetime') {
@@ -22,7 +29,7 @@ const ChildTable = (props: any) => {
     <>
       <Table columns={columns} {...rest} pagination={false}></Table>
       <div style={style}>
-        <Pagination {...pagination} />
+        <Pagination {...pagination} onChange={onChange} total={total} />
       </div>
     </>
   )

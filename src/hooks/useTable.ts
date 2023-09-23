@@ -3,31 +3,30 @@ import { useState, useEffect } from 'react'
 interface SetStatePage {
   current: number
   pageSize: number
-  total: number
   showSizeChanger: boolean
   showQuickJumper: boolean
   pageSizeOptions: number[]
   showTotal: (total: number) => string
-  onChange: (page: number, pageSize: number) => void
 }
 
 export const usePage: any = (doRequest: () => Promise<any>) => {
   const [pagination, setPagination] = useState<SetStatePage>({
     current: 1,
     pageSize: 10,
-    total: 0,
     showSizeChanger: true,
     showQuickJumper: true,
     showTotal: (total: number) => `共 ${total} 条数据`,
-    pageSizeOptions: [10, 20, 30, 40],
-    onChange: (page: number, pageSize: number) => {
-      if (pageSize !== pagination.pageSize) {
-        setPagination({ ...pagination, pageSize, current: 1 })
-      } else {
-        setPagination({ ...pagination, current: page, pageSize })
-      }
-    }
+    pageSizeOptions: [10, 20, 30, 40]
   })
+  const [total, setTotal] = useState(0)
+
+  function onChange(page: number, pageSize: number) {
+    if (pageSize !== pagination.pageSize) {
+      setPagination((pagi) => ({ ...pagi, current: 1, pageSize }))
+    } else {
+      setPagination((pagi) => ({ ...pagi, current: page }))
+    }
+  }
 
   const resetPage = () => {
     setPagination({
@@ -39,12 +38,9 @@ export const usePage: any = (doRequest: () => Promise<any>) => {
 
   useEffect(() => {
     doRequest().then((res) => {
-      setPagination({
-        ...pagination,
-        total: res.total
-      })
+      setTotal(res.total)
     })
-  }, [pagination.current, pagination.pageSize])
+  }, [pagination])
 
-  return { pagination, resetPage, setPagination }
+  return { pagination, total, setPagination, setTotal, onChange, resetPage }
 }
