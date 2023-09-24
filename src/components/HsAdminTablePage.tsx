@@ -1,5 +1,6 @@
-import { hsHandleTableDate, hsHandleTableDateTime, hsHandleTableRender } from '@/utils/table'
+import { memo } from 'react'
 import { Table, Pagination } from 'antd'
+import { hsHandleTableDate, hsHandleTableDateTime, hsHandleTableRender } from '@/utils/table'
 
 interface ColumnsType {
   title: string
@@ -8,7 +9,7 @@ interface ColumnsType {
   type?: string
   render?: (text: string) => JSX.Element
 }
-const ChildTable = (props: any) => {
+const HsAdminTablePage = (props: any) => {
   const { pagination, columns, ...rest } = props
   const style = {
     display: 'flex',
@@ -35,4 +36,4 @@ const ChildTable = (props: any) => {
   )
 }
 
-export default ChildTable
+export default memo(HsAdminTablePage)

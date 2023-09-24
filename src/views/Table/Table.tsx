@@ -3,7 +3,7 @@ import './style.less'
 import { usePage } from '@/hooks/useTable'
 import { Button } from 'antd'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
-import ChildTable from './ChildTable'
+import HsAdminTablePage from '@/components/HsAdminTablePage'
 
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
@@ -40,7 +40,7 @@ const TablePage: React.FC = () => {
     <>
       <Button type="primary">reset Button</Button>
       <br />
-      <ChildTable columns={columns} rowKey="id" dataSource={dataSource} pagination={pagination}></ChildTable>
+      <HsAdminTablePage columns={columns} rowKey="id" dataSource={dataSource} pagination={pagination}></HsAdminTablePage>
     </>
   )
 }
