@@ -8,7 +8,7 @@ import 'dayjs/locale/zh-cn'
 import 'antd/dist/reset.css'
 import { Provider } from 'react-redux'
 import { store } from './store'
-import './index.less'
+import '@/styles/index.less'
 import router from './router'
 
 dayjs.locale('zh-cn')

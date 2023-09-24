@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react'
 import { Select } from 'antd'
 import debounce from 'lodash/debounce'
 
-const SelectUsers = (props: any) => {
+const HsAdminSelect = (props: any) => {
   const debounceTimeout = 400
 
   const filterOption: any = (input: string, option: { label: string; value: string }) =>
@@ -17,4 +17,4 @@ const SelectUsers = (props: any) => {
   return <Select allowClear showSearch filterOption={filterOption} onSearch={handleSearch} {...props}></Select>
 }
 
-export default memo(SelectUsers)
+export default memo(HsAdminSelect)

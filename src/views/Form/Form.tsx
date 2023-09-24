@@ -1,4 +1,4 @@
-import { Form, Input, Button, Space, InputNumber, Row, Col } from 'antd'
+import { Form, Button, Space, InputNumber, Row, Col } from 'antd'
 import { useState, memo, useEffect } from 'react'
 import { getPlanningDataSheetDetail } from '@/api/planningOverview/dataSheet'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
@@ -6,8 +6,7 @@ import { getDataSheetAttributes, getDataSheetPlanningDimension, getDataMaintenan
 import './style.less'
 import SelectUsers from './SelectUsers'
 import HsAdminSelect from '@/components/HsAdminSelect'
-
-const { TextArea } = Input
+import HsAdminInput from '@/components/HsAdminInput'
 
 function Edit() {
   const [form] = Form.useForm()
@@ -77,12 +76,12 @@ function Edit() {
       <Row>
         <Col span={12}>
           <Form.Item label="表名" name="en_table_name" rules={[{ required: true, message: '请输入表名' }]}>
-            <Input placeholder="请输入表名" />
+            <HsAdminInput placeholder="请输入表名" />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item label="中文名" name="cn_table_name" rules={[{ required: true, message: '请输入中文名' }]}>
-            <TextArea placeholder="请输入中文名" autoSize={{ minRows: 3, maxRows: 8 }} />
+            <HsAdminInput TextArea placeholder="请输入中文名" autoSize={{ minRows: 3, maxRows: 8 }} />
           </Form.Item>
         </Col>
         <Col span={12}>
