@@ -4,11 +4,11 @@ import { Spin } from 'antd'
 import { AppstoreOutlined } from '@ant-design/icons'
 
 const Layout = lazy(() => import('@/views/Layout'))
-const Login = lazy(() => import('@/views/Login/Login'))
-const Home = lazy(() => import('@/views/Home/Home'))
-const Router = lazy(() => import('@/views/Router/Router'))
-const Table = lazy(() => import('@/views/Table/Table'))
-const Form = lazy(() => import('@/views/Form/Form'))
+const Login = lazy(() => import('@/views/Login'))
+const Home = lazy(() => import('@/views/Home'))
+const Router = lazy(() => import('@/views/Router'))
+const Table = lazy(() => import('@/views/Table'))
+const Form = lazy(() => import('@/views/Form'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
