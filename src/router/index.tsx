@@ -14,6 +14,7 @@ const HooksMemo = lazy(() => import('@/views/Hooks/Memo'))
 const Reducer = lazy(() => import('@/views/Hooks/Reducer'))
 const Ref = lazy(() => import('@/views/Hooks/Ref'))
 const Context = lazy(() => import('@/views/Hooks/Context'))
+const ReducerContext = lazy(() => import('@/views/Hooks/ReducerContext'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -100,6 +101,11 @@ const routeChildren: CustomRouteConfig[] = [
         name: 'context',
         path: 'context',
         element: withLoading(<Context />)
+      },
+      {
+        name: 'reducerContext',
+        path: 'reducerContext',
+        element: withLoading(<ReducerContext />)
       }
     ]
   }

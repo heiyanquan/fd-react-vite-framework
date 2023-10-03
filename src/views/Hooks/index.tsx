@@ -26,6 +26,10 @@ const Demo: React.FC = () => {
     {
       key: 'context',
       label: 'context'
+    },
+    {
+      key: 'reducerContext',
+      label: 'reducerContext'
     }
   ]
   useEffect(() => {
