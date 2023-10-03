@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom'
 import { Spin } from 'antd'
 import { AppstoreOutlined } from '@ant-design/icons'
 
@@ -9,6 +9,11 @@ const Home = lazy(() => import('@/views/Home'))
 const Router = lazy(() => import('@/views/Router'))
 const Table = lazy(() => import('@/views/Table'))
 const Form = lazy(() => import('@/views/Form'))
+const Hooks = lazy(() => import('@/views/Hooks'))
+const HooksMemo = lazy(() => import('@/views/Hooks/Memo'))
+const Reducer = lazy(() => import('@/views/Hooks/Reducer'))
+const Ref = lazy(() => import('@/views/Hooks/Ref'))
+const Context = lazy(() => import('@/views/Hooks/Context'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -28,8 +33,13 @@ const menuNames = defineConfigs([
   }
 ])
 type menuType = (typeof menuNames)[number]['key']
+type CustomRouteConfig = RouteObject & {
+  belong?: menuType | ''
+  name: string
+  children?: CustomRouteConfig[]
+}
 
-const subRoutes: Array<{ belong: menuType | ''; name: string; path: string; element: JSX.Element }> = [
+const routeChildren: CustomRouteConfig[] = [
   {
     belong: '',
     name: '',
@@ -59,13 +69,41 @@ const subRoutes: Array<{ belong: menuType | ''; name: string; path: string; elem
     name: 'form',
     path: 'form',
     element: withLoading(<Form />)
+  },
+  {
+    belong: 'sub1',
+    name: 'hooks',
+    path: 'hooks',
+    element: withLoading(<Hooks />),
+    children: [
+      {
+        name: '',
+        path: '',
+        element: withLoading(<Navigate to="/hooks/memo" replace />)
+      },
+      {
+        name: 'memo',
+        path: 'memo',
+        element: withLoading(<HooksMemo />)
+      },
+      {
+        name: 'reducer',
+        path: 'reducer',
+        element: withLoading(<Reducer />)
+      },
+      {
+        name: 'ref',
+        path: 'ref',
+        element: withLoading(<Ref />)
+      },
+      {
+        name: 'context',
+        path: 'context',
+        element: withLoading(<Context />)
+      }
+    ]
   }
 ]
-
-const routeChildren = subRoutes.map((item) => ({
-  path: item.path,
-  element: item.element
-}))
 
 const router = createBrowserRouter([
   {
@@ -87,7 +125,7 @@ if (import.meta.hot) {
 
 export const menuItems: Array<{ label: string; key: string; icon: JSX.Element; children: Array<{ label: string; key: string }> }> = menuNames.map(
   (menu) => {
-    const children = subRoutes
+    const children = routeChildren
       .filter((item) => item.belong === menu.key)
       .map((item) => ({
         label: item.name,
