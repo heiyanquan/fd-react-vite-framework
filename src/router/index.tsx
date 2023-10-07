@@ -15,6 +15,7 @@ const Reducer = lazy(() => import('@/views/Hooks/Reducer'))
 const Ref = lazy(() => import('@/views/Hooks/Ref'))
 const Context = lazy(() => import('@/views/Hooks/Context'))
 const ReducerContext = lazy(() => import('@/views/Hooks/ReducerContext'))
+const Immer = lazy(() => import('@/views/Hooks/Immer'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -106,6 +107,11 @@ const routeChildren: CustomRouteConfig[] = [
         name: 'reducerContext',
         path: 'reducerContext',
         element: withLoading(<ReducerContext />)
+      },
+      {
+        name: 'immer',
+        path: 'immer',
+        element: withLoading(<Immer />)
       }
     ]
   }

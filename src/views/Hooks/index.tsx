@@ -30,6 +30,10 @@ const Demo: React.FC = () => {
     {
       key: 'reducerContext',
       label: 'reducerContext'
+    },
+    {
+      key: 'immer',
+      label: 'immer'
     }
   ]
   useEffect(() => {
