@@ -10,18 +10,15 @@ const TablePage: React.FC = () => {
   const columns = [
     {
       title: '表编码',
-      dataIndex: 'uni_code',
-      key: 'uni_code'
+      dataIndex: 'uni_code'
     },
     {
       title: '表名（中文）',
-      dataIndex: 'name',
-      key: 'name'
+      dataIndex: 'name'
     },
     {
       title: '描述',
-      dataIndex: 'description',
-      key: 'description'
+      dataIndex: 'description'
     }
   ]
 
