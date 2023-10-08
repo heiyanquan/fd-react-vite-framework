@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'antd'
-import { useCountStore } from './store'
+import { useCountStore, useCountFn } from './store'
 
 const EditModal2 = () => {
   const count = useCountStore((state) => state.count)
@@ -21,6 +21,9 @@ const EditModal2 = () => {
 }
 
 const EditModal1 = () => {
+  const store = useCountFn()
+  console.log('store', store)
+  console.log('useCountStore', useCountStore)
   const count = useCountStore((state) => state.count)
   const increment = useCountStore((state) => state.increment)
   const decrement = useCountStore((state) => state.decrement)

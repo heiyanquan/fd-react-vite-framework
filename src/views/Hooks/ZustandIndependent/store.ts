@@ -14,3 +14,7 @@ export const useCountStore = create<State & Actions>((set) => ({
   increment: (qty: number) => set((state) => ({ count: state.count + qty })),
   decrement: (qty: number) => set((state) => ({ count: state.count - qty }))
 }))
+
+export function useCountFn() {
+  return useCountStore
+}
