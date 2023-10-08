@@ -17,7 +17,7 @@ const Context = lazy(() => import('@/views/Hooks/Context'))
 const ReducerContext = lazy(() => import('@/views/Hooks/ReducerContext'))
 const Immer = lazy(() => import('@/views/Hooks/Immer'))
 const Zustand = lazy(() => import('@/views/Hooks/Zustand'))
-const ZustandContext = lazy(() => import('@/views/Hooks/ZustandContext'))
+const ZustandIndependent = lazy(() => import('@/views/Hooks/ZustandIndependent'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -123,7 +123,7 @@ const routeChildren: CustomRouteConfig[] = [
       {
         name: 'zustandContext',
         path: 'zustandContext',
-        element: withLoading(<ZustandContext />)
+        element: withLoading(<ZustandIndependent />)
       }
     ]
   }
