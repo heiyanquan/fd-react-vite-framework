@@ -1,10 +1,16 @@
-import { createContext } from 'react'
-import { createStore } from 'zustand'
+import { create } from 'zustand'
 
-export const StoreContext = createContext(null)
+type State = {
+  count: number
+}
 
-export const storeRef = createStore((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 })
+type Actions = {
+  increment: (qty: number) => void
+  decrement: (qty: number) => void
+}
+
+export const useCountStore = create<State & Actions>((set) => ({
+  count: 0,
+  increment: (qty: number) => set((state) => ({ count: state.count + qty })),
+  decrement: (qty: number) => set((state) => ({ count: state.count - qty }))
 }))
