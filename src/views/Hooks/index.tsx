@@ -34,6 +34,14 @@ const Demo: React.FC = () => {
     {
       key: 'immer',
       label: 'immer'
+    },
+    {
+      key: 'zustand',
+      label: 'zustand'
+    },
+    {
+      key: 'zustandContext',
+      label: 'zustandContext'
     }
   ]
   useEffect(() => {
