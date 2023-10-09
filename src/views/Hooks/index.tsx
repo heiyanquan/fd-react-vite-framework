@@ -38,10 +38,6 @@ const Demo: React.FC = () => {
     {
       key: 'zustand',
       label: 'zustand'
-    },
-    {
-      key: 'zustandContext',
-      label: 'zustandContext'
     }
   ]
   useEffect(() => {
