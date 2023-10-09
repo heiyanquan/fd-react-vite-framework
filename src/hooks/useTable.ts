@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useImmer } from 'use-immer'
 
 interface SetStatePage {
   current: number
@@ -9,39 +10,46 @@ interface SetStatePage {
   showTotal: (total: number) => string
 }
 
-export const usePage: any = (doRequest: () => Promise<any>) => {
-  const [pagination, setPagination] = useState<SetStatePage>({
+export const usePage: any = (doRequest?: () => Promise<any>, initOptions?: SetStatePage) => {
+  const [pagination, setPagination] = useImmer<SetStatePage>({
     current: 1,
     pageSize: 10,
     showSizeChanger: true,
     showQuickJumper: true,
     showTotal: (total: number) => `共 ${total} 条数据`,
-    pageSizeOptions: [10, 20, 30, 40]
+    pageSizeOptions: [10, 20, 30, 40],
+    ...initOptions
   })
   const [total, setTotal] = useState(0)
 
   function onChange(page: number, pageSize: number) {
     if (pageSize !== pagination.pageSize) {
-      setPagination((pagi) => ({ ...pagi, current: 1, pageSize }))
+      setPagination((prevPagi) => {
+        prevPagi.current = 1
+        prevPagi.pageSize = pageSize
+      })
     } else {
-      setPagination((pagi) => ({ ...pagi, current: page }))
+      setPagination((prevPagi) => {
+        prevPagi.current = page
+      })
     }
   }
 
   const resetPage = () => {
-    setPagination({
-      ...pagination,
-      current: 1,
-      pageSize: 10
+    setPagination((prevPagi) => {
+      prevPagi.current = 1
+      prevPagi.pageSize = 10
     })
   }
 
   useEffect(() => {
-    doRequest().then((res) => {
-      if (typeof res === 'object') {
-        setTotal(res.total)
-      }
-    })
+    if (doRequest) {
+      doRequest().then((res) => {
+        if (typeof res === 'object') {
+          setTotal(res.total)
+        }
+      })
+    }
   }, [pagination])
 
   return {
