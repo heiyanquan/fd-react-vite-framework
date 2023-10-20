@@ -1,13 +1,16 @@
 import React from 'react'
 import { Button } from 'antd'
-import { useCountStore } from './store'
+import { useCountStore, useCountStore2 } from './store'
 
 const EditModal = () => {
   const count = useCountStore((state) => state.count)
+  const count2 = useCountStore2((state) => state.count)
   const increment = useCountStore((state) => state.increment)
+  const increment2 = useCountStore2((state) => state.increment)
 
   const addCount = () => {
     increment(10)
+    increment2(15)
   }
 
   return (
@@ -16,6 +19,7 @@ const EditModal = () => {
         组件点击加count
       </Button>
       <h1>子组件接收过来的数据 count:{count}</h1>
+      <h1>子组件接收过来的数据 count2:{count2}</h1>
     </>
   )
 }
