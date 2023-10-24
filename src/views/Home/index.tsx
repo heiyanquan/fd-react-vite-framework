@@ -1,28 +1,30 @@
-import { Button, Space } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import './style.less'
+import { FC, useState, useEffect } from 'react'
+import { Button, Spin } from 'antd'
 
-function HomePage() {
-  const navigate = useNavigate()
-
-  const toPage = () => {
-    navigate('/router?user=name1', {
-      state: {
-        params: {
-          id: 1
-        }
-      }
-    })
+const HomePage: FC = () => {
+  const [status, setStatus] = useState('loading')
+  const onChange = () => {
+    setStatus('loading')
+    setTimeout(() => {
+      setStatus('success')
+    }, 3000)
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setStatus('success')
+    }, 3000)
+  }, [])
+
   return (
-    <Space wrap>
-      <Button type="primary" onClick={toPage}>
-        Primary Button
-      </Button>
-      <Button>Default Button</Button>
-      <Button type="link">Link Button</Button>
-    </Space>
+    <>
+      {status === 'loading' && <Spin />}
+      {status === 'success' && (
+        <Button type="primary" onClick={onChange}>
+          Primary Button
+        </Button>
+      )}
+    </>
   )
 }
 
