@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
-import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom'
-import { Spin } from 'antd'
+import { createBrowserRouter, Navigate, RouteObject, useRouteError } from 'react-router-dom'
+import { message, Spin } from 'antd'
 import { AppstoreOutlined } from '@ant-design/icons'
 
 const Layout = lazy(() => import('@/views/Layout'))
@@ -123,11 +123,22 @@ const routeChildren: CustomRouteConfig[] = [
   }
 ]
 
+function ErrorBoundary() {
+  const error = useRouteError()
+  console.error(error.message)
+  if (error.message.includes('Failed to fetch dynamically imported module')) {
+    message.error('页面已发新版，请强刷页面或清空缓存')
+  }
+  // Uncaught ReferenceError: path is not defined
+  return <div>页面已发新版，请强刷页面或清空缓存</div>
+}
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: withLoading(<Layout />),
-    children: routeChildren
+    children: routeChildren,
+    errorElement: <ErrorBoundary />
   },
   {
     path: '/login',

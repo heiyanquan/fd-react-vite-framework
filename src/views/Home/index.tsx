@@ -1,8 +1,7 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { Button, Space } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import './style.less'
-import { initChart } from './chart'
 
 const HomePage: FC = () => {
   const navigate = useNavigate()
@@ -17,10 +16,6 @@ const HomePage: FC = () => {
     })
   }
 
-  useEffect(() => {
-    initChart()
-  }, [])
-
   return (
     <>
       <Space wrap>
@@ -28,7 +23,6 @@ const HomePage: FC = () => {
           to router
         </Button>
       </Space>
-      <div className="chart" id="main"></div>
     </>
   )
 }
