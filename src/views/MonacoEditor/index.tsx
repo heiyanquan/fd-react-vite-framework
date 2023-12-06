@@ -1,13 +1,12 @@
-import { FC, SetStateAction, useCallback, useState } from 'react'
+import { FC, SetStateAction, useCallback, useEffect, useState } from 'react'
 import CodeMirror from '@uiw/react-codemirror'
-import { javascript } from '@codemirror/lang-javascript'
 import { Select } from 'antd'
-import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
-import { languages } from '@codemirror/language-data'
+import { langs } from './langs'
+import { color } from '@uiw/codemirror-extensions-color'
 
 const MonacoEditor: FC = () => {
-  const [value, setValue] = useState("console.log('hello world!');")
-  const [selectValue, setselectValue] = useState('javascript')
+  const [code, setCode] = useState('')
+  const [mode, setMode] = useState<string>('')
   const options = [
     { label: 'javascript', value: 'javascript' },
     { label: 'sql', value: 'sql' },
@@ -15,37 +14,33 @@ const MonacoEditor: FC = () => {
     { label: 'markdown', value: 'markdown' },
     { label: 'python', value: 'python' }
   ]
-  const [extensions, setextensions] = useState([javascript({ jsx: true })])
+  const [extensions, setExtensions] = useState<any[]>()
+  const [allModuleTxt, setallModuleTxt] = useState<any>({})
 
-  const selectChange = (value: any) => {
-    console.log('[ value ] >', value)
-    setselectValue(value)
-    switch (value) {
-      case 'javascript':
-        setValue("console.log('hello world!');")
-        setextensions([javascript({ jsx: true })])
-        break
-      case 'markdown':
-        setValue(`
-          # Not dependent on uiw.
-          npm install @codemirror/lang-markdown --save
-          npm install @codemirror/language-data --save
-          [weisit ulr](https://uiwjs.github.io/react-codemirror/)
-        `)
-        setextensions([markdown({ base: markdownLanguage, codeLanguages: languages })])
-        break
-      default:
-        break
+  function handleLangChange(lang: keyof typeof langs) {
+    for (const path in allModuleTxt) {
+      if (path.includes(lang)) {
+        setCode(allModuleTxt[path])
+        if (langs[lang]) {
+          setExtensions([color, langs[lang]()])
+        }
+        setMode(lang)
+      }
     }
   }
   const onChange = useCallback((val: SetStateAction<string>, viewUpdate: any) => {
     console.log('CodeMirror: onChange', val, viewUpdate)
-    setValue(val)
   }, [])
+
+  useEffect(() => {
+    const modules = import.meta.glob('/node_modules/code-example/txt/sample.*.txt', { as: 'raw', eager: true })
+    setallModuleTxt(modules)
+  }, [])
+
   return (
     <>
-      <Select value={selectValue} options={options} onChange={selectChange}></Select>
-      <CodeMirror value={value} height="200px" extensions={extensions} onChange={onChange} />
+      <Select value={mode} options={options} onChange={handleLangChange}></Select>
+      <CodeMirror value={code} height="600px" extensions={extensions} onChange={onChange} />
     </>
   )
 }
