@@ -1,5 +1,4 @@
 import { languages } from '@codemirror/language-data'
-import { StreamLanguage } from '@codemirror/language'
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown'
 import { javascript } from '@codemirror/lang-javascript'
 import { html } from '@codemirror/lang-html'
