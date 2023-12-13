@@ -43,6 +43,7 @@
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",
     "go": "link:@codemirror/legacy-modes/mode/go",
+    "hs-react-admin": "^0.0.2",
     "immer": "^10.0.3",
     "js-md5": "^0.7.3",
     "lodash": "^4.17.21",
