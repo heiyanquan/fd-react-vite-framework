@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Space, Tag } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
-import { HsAdminTablePage } from 'hs-react-admin'
+import { HsAdminTable } from 'hs-react-admin'
 
 interface DataType {
   key: string
@@ -84,34 +84,6 @@ const data: DataType[] = [
   }
 ]
 
-const App: React.FC = () => {
-  const [pagination, setPagination] = useState<any>({
-    current: 1,
-    pageSize: 10,
-    showSizeChanger: true,
-    showQuickJumper: true,
-    showTotal: (total: number) => `共 ${total} 条数据`,
-    pageSizeOptions: [10, 20, 30, 40]
-  })
-  const [total, setTotal] = useState(0)
-
-  function onChange(page: number, pageSize: number) {
-    setPagination((prevState: { pageSize: number; current: number }) => {
-      if (pageSize !== prevState.pageSize) {
-        prevState.current = 1
-        prevState.pageSize = pageSize
-      } else {
-        prevState.current = page
-      }
-      return { ...prevState }
-    })
-  }
-
-  useEffect(() => {
-    setTotal(22)
-  }, [])
-
-  return <HsAdminTablePage columns={columns} dataSource={data} pagination={{ ...pagination, total, onChange }} />
-}
+const App: React.FC = () => <HsAdminTable columns={columns} dataSource={data} />
 
 export default App
