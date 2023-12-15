@@ -33,7 +33,7 @@
     "@codemirror/language": "^6.9.3",
     "@codemirror/language-data": "^6.3.1",
     "@hs-react-admin/pro-components": "0.0.9",
-    "@hs-react-admin/pro-input": "0.0.2",
+    "@hs-react-admin/pro-input": "0.0.5",
     "@reduxjs/toolkit": "^1.9.7",
     "@uiw/codemirror-extensions-color": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
