@@ -48,7 +48,7 @@ const routeChildren: CustomRouteConfig[] = [
     belong: '',
     name: '',
     path: '',
-    element: withLoading(<Navigate to="/form" replace />)
+    element: withLoading(<Navigate to="/home" replace />)
   },
   {
     belong: 'sub1',

@@ -1,5 +1,5 @@
 import React from 'react'
-import HsAdminInput from '@hs-react-admin/pro-input'
+import HsAdminInput from '@react-admin/pro-input'
 
 const App: React.FC = () => {
   return (
