@@ -33,7 +33,8 @@ const MonacoEditor: FC = () => {
   }, [])
 
   useEffect(() => {
-    import('code-example/txt/sample.css.txt').then((data) => {
+    const lang = 'css'
+    import(`code-example/txt/sample.${lang}.txt`).then((data) => {
       setCode(data.default)
       fetch(data.default)
         .then((res) => res.text())
