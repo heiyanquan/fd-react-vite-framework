@@ -20,7 +20,9 @@ const MonacoEditor: FC = () => {
   function handleLangChange(lang: keyof typeof langs) {
     for (const path in allModuleTxt) {
       if (path.includes(lang)) {
-        setCode(allModuleTxt[path])
+        allModuleTxt[path]().then((res: SetStateAction<string>) => {
+          setCode(res)
+        })
         if (langs[lang]) {
           setExtensions([color, langs[lang]()])
         }
@@ -33,7 +35,7 @@ const MonacoEditor: FC = () => {
   }, [])
 
   useEffect(() => {
-    const modules = import.meta.glob('/node_modules/code-example/txt/sample.*.txt', { as: 'raw', eager: true })
+    const modules = import.meta.glob('/node_modules/code-example/txt/sample.*.txt', { as: 'raw' })
     setallModuleTxt(modules)
   }, [])
 
