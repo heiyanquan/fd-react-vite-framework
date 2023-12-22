@@ -18,6 +18,7 @@ const ReducerContext = lazy(() => import('@/views/Hooks/ReducerContext'))
 const Immer = lazy(() => import('@/views/Hooks/Immer'))
 const Zustand = lazy(() => import('@/views/Hooks/Zustand'))
 const MonacoEditor = lazy(() => import('@/views/MonacoEditor'))
+const FormComponents = lazy(() => import('@/views/FormComponents'))
 
 function withLoading(compnent: JSX.Element) {
   return <Suspense fallback={<Spin />}>{compnent}</Suspense>
@@ -128,6 +129,12 @@ const routeChildren: CustomRouteConfig[] = [
     path: 'monacoEditor',
     element: withLoading(<MonacoEditor />)
   },
+  {
+    belong: 'sub1',
+    name: 'formComponents',
+    path: 'formComponents',
+    element: withLoading(<FormComponents />)
+  }
 ]
 
 function ErrorBoundary() {
