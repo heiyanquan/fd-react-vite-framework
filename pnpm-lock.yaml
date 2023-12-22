@@ -2,98 +2,63 @@ lockfileVersion: 5.4
 
 specifiers:
   '@ant-design/icons': ^5.2.6
-  '@ant-design/pro-components': ^2.6.41
+  '@ant-design/pro-components': ^2.6.43
   '@ant-design/use-emotion-css': ^1.0.4
-  '@antv/g6': ^4.8.23
-  '@codemirror/lang-css': ^6.2.1
-  '@codemirror/lang-html': ^6.4.7
-  '@codemirror/lang-java': ^6.0.1
-  '@codemirror/lang-javascript': ^6.2.1
-  '@codemirror/lang-json': ^6.0.1
-  '@codemirror/lang-less': ^6.0.1
-  '@codemirror/lang-markdown': ^6.2.3
-  '@codemirror/lang-python': ^6.1.3
-  '@codemirror/lang-sass': ^6.0.2
-  '@codemirror/lang-sql': ^6.5.4
-  '@codemirror/lang-vue': ^0.1.2
-  '@codemirror/language': ^6.9.3
-  '@codemirror/language-data': ^6.3.1
-  '@react-admin/pro-codemirror': ^0.0.2
+  '@antv/g6': ^4.8.24
   '@react-admin/pro-components': ^0.0.35
   '@react-admin/pro-utils': ^0.0.12
   '@reduxjs/toolkit': ^1.9.7
   '@types/js-md5': ^0.7.2
-  '@types/lodash': ^4.14.201
-  '@types/node': ^20.9.2
-  '@types/react': ^18.2.37
-  '@types/react-dom': ^18.2.15
-  '@typescript-eslint/eslint-plugin': ^6.11.0
-  '@typescript-eslint/parser': ^6.11.0
-  '@uiw/codemirror-extensions-color': ^4.21.21
-  '@uiw/react-codemirror': ^4.21.21
+  '@types/lodash': ^4.14.202
+  '@types/node': ^20.10.5
+  '@types/react': ^18.2.45
+  '@types/react-dom': ^18.2.18
+  '@typescript-eslint/eslint-plugin': ^6.15.0
+  '@typescript-eslint/parser': ^6.15.0
   '@vitejs/plugin-react-swc': ^3.5.0
   ahooks: ^3.7.8
-  antd: ^5.12.2
+  antd: ^5.12.4
   axios: ^1.6.2
   classnames: ^2.3.2
   code-example: ^3.3.7
   cross-env: ^7.0.3
   dayjs: ^1.11.10
   echarts: ^5.4.3
-  eslint: ^8.54.0
-  eslint-config-prettier: ^9.0.0
-  eslint-plugin-import: ^2.29.0
+  eslint: ^8.56.0
+  eslint-config-prettier: ^9.1.0
+  eslint-plugin-import: ^2.29.1
   eslint-plugin-jsx-a11y: ^6.8.0
-  eslint-plugin-prettier: ^5.0.1
+  eslint-plugin-prettier: ^5.1.1
   eslint-plugin-react-hooks: ^4.6.0
-  eslint-plugin-react-refresh: ^0.4.4
-  go: link:@codemirror/legacy-modes/mode/go
+  eslint-plugin-react-refresh: ^0.4.5
   immer: ^10.0.3
   js-md5: ^0.7.3
   less: ^4.2.0
   lodash: ^4.17.21
-  powershell: link:@codemirror/legacy-modes/mode/powershell
-  prettier: ^3.1.0
+  prettier: ^3.1.1
   rc-virtual-list: ^3.11.3
   react: ^18.2.0
   react-dom: ^18.2.0
   react-monaco-editor: ^0.54.0
   react-redux: ^8.1.3
-  react-router-dom: ^6.19.0
+  react-router-dom: ^6.21.1
   rimraf: ^5.0.5
-  shell: link:@codemirror/legacy-modes/mode/shell
-  typescript: ^5.2.2
+  typescript: ^5.3.3
   typescript-plugin-css-modules: ^5.0.2
   use-immer: ^0.9.0
-  vite: ^5.0.0
+  vite: ^5.0.10
   vite-plugin-eslint: ^1.8.1
   vite-plugin-inspect: ^0.7.42
-  zustand: ^4.4.6
+  zustand: ^4.4.7
 
 dependencies:
   '@ant-design/icons': 5.2.6_biqbaboplfbrettd7655fr4n2y
   '@ant-design/pro-components': 2.6.43_5jiz25346anej3tsllgy7kmzp4
   '@ant-design/use-emotion-css': 1.0.4_5jiz25346anej3tsllgy7kmzp4
   '@antv/g6': 4.8.24
-  '@codemirror/lang-css': 6.2.1
-  '@codemirror/lang-html': 6.4.7
-  '@codemirror/lang-java': 6.0.1
-  '@codemirror/lang-javascript': 6.2.1
-  '@codemirror/lang-json': 6.0.1
-  '@codemirror/lang-less': 6.0.1
-  '@codemirror/lang-markdown': 6.2.3
-  '@codemirror/lang-python': 6.1.3
-  '@codemirror/lang-sass': 6.0.2
-  '@codemirror/lang-sql': 6.5.4
-  '@codemirror/lang-vue': 0.1.2
-  '@codemirror/language': 6.9.3
-  '@codemirror/language-data': 6.3.1
-  '@react-admin/pro-codemirror': 0.0.2_mukmbv7oyyevxtknexkknbmihq
-  '@react-admin/pro-components': 0.0.35_rycpdagjc5c7hv3pcl6p33xqay
+  '@react-admin/pro-components': 0.0.35_hdupokltvgfghoukbp6vqumcwi
   '@react-admin/pro-utils': 0.0.12_hdupokltvgfghoukbp6vqumcwi
   '@reduxjs/toolkit': 1.9.7_reiadaay42xu3uk4bvhmtbk5mu
-  '@uiw/codemirror-extensions-color': 4.21.21_@codemirror+language@6.9.3
-  '@uiw/react-codemirror': 4.21.21_p5bhg6t6c3ycw2fltyt7pc52lm
   ahooks: 3.7.8_react@18.2.0
   antd: 5.12.4_biqbaboplfbrettd7655fr4n2y
   axios: 1.6.2
@@ -101,18 +66,15 @@ dependencies:
   code-example: 3.3.7
   dayjs: 1.11.10
   echarts: 5.4.3
-  go: link:@codemirror/legacy-modes/mode/go
   immer: 10.0.3
   js-md5: 0.7.3
   lodash: 4.17.21
-  powershell: link:@codemirror/legacy-modes/mode/powershell
   rc-virtual-list: 3.11.3_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-monaco-editor: 0.54.0_qinpt5tsrh57s4kh6guy25fqdq
   react-redux: 8.1.3_y25r3j74y2ixp3wwje7zxg74ra
   react-router-dom: 6.21.1_biqbaboplfbrettd7655fr4n2y
-  shell: link:@codemirror/legacy-modes/mode/shell
   use-immer: 0.9.0_immer@10.0.3+react@18.2.0
   zustand: 4.4.7_jfowsagsozry3hkxhgszlfov64
 
@@ -787,10 +749,8 @@ packages:
       tinycolor2: 1.6.0
     dev: false
 
-  /@codemirror/autocomplete/6.11.1_@codemirror+language@6.9.3:
+  /@codemirror/autocomplete/6.11.1:
     resolution: {integrity: sha512-L5UInv8Ffd6BPw0P3EF7JLYAMeEbclY7+6Q11REt8vhih8RuLreKtPy/xk8wPxs4EQgYqzI7cdgpiYwWlbS/ow==}
-    peerDependencies:
-      '@codemirror/language': ^6.0.0
     dependencies:
       '@codemirror/language': 6.9.3
       '@codemirror/state': 6.3.3
@@ -828,7 +788,7 @@ packages:
   /@codemirror/lang-css/6.2.1:
     resolution: {integrity: sha512-/UNWDNV5Viwi/1lpr/dIXJNWiwDxpw13I4pTUAsNxZdg6E0mI2kTQb0P2iHczg1Tu+H4EBgJR+hYhKiHKko7qg==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/language': 6.9.3
       '@codemirror/state': 6.3.3
       '@lezer/common': 1.1.2
@@ -838,7 +798,7 @@ packages:
   /@codemirror/lang-html/6.4.7:
     resolution: {integrity: sha512-y9hWSSO41XlcL4uYwWyk0lEgTHcelWWfRuqmvcAmxfCs0HNWZdriWo/EU43S63SxEZpc1Hd50Itw7ktfQvfkUg==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/lang-css': 6.2.1
       '@codemirror/lang-javascript': 6.2.1
       '@codemirror/language': 6.9.3
@@ -859,7 +819,7 @@ packages:
   /@codemirror/lang-javascript/6.2.1:
     resolution: {integrity: sha512-jlFOXTejVyiQCW3EQwvKH0m99bUYIw40oPmFjSX2VS78yzfe0HELZ+NEo9Yfo1MkGRpGlj3Gnu4rdxV1EnAs5A==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/language': 6.9.3
       '@codemirror/lint': 6.4.2
       '@codemirror/state': 6.3.3
@@ -887,7 +847,7 @@ packages:
   /@codemirror/lang-markdown/6.2.3:
     resolution: {integrity: sha512-wCewRLWpdefWi7uVkHIDiE8+45Fe4buvMDZkihqEom5uRUQrl76Zb13emjeK3W+8pcRgRfAmwelURBbxNEKCIg==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/lang-html': 6.4.7
       '@codemirror/language': 6.9.3
       '@codemirror/state': 6.3.3
@@ -909,7 +869,7 @@ packages:
   /@codemirror/lang-python/6.1.3:
     resolution: {integrity: sha512-S9w2Jl74hFlD5nqtUMIaXAq9t5WlM0acCkyuQWUUSvZclk1sV+UfnpFiZzuZSG+hfEaOmxKR5UxY/Uxswn7EhQ==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/language': 6.9.3
       '@lezer/python': 1.1.9
     dev: false
@@ -934,7 +894,7 @@ packages:
   /@codemirror/lang-sql/6.5.4:
     resolution: {integrity: sha512-5Gq7fYtT/5HbNyIG7a8vYaqOYQU3JbgtBe3+derkrFUXRVcjkf8WVgz++PIbMFAQsOFMDdDR+uiNM8ZRRuXH+w==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/language': 6.9.3
       '@codemirror/state': 6.3.3
       '@lezer/highlight': 1.2.0
@@ -963,7 +923,7 @@ packages:
   /@codemirror/lang-xml/6.0.2:
     resolution: {integrity: sha512-JQYZjHL2LAfpiZI2/qZ/qzDuSqmGKMwyApYmEUUCTxLM4MWS7sATUEfIguZQr9Zjx/7gcdnewb039smF6nC2zw==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/language': 6.9.3
       '@codemirror/state': 6.3.3
       '@lezer/common': 1.1.2
@@ -1720,39 +1680,7 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@react-admin/pro-codemirror/0.0.2_mukmbv7oyyevxtknexkknbmihq:
-    resolution: {integrity: sha512-RdzvmETAJ3lHlWyl3N9fHm6L6oI0IYvUbenX1WTnLLQwYTdGZyOmmzvybD5C/yIb/AovIMYOp/XVO5KeL4Y7Kw==}
-    peerDependencies:
-      antd: '>=5.11.2'
-      react: '>=18.2.0'
-      react-dom: '>=18.2.0'
-    dependencies:
-      '@babel/runtime': 7.23.6
-      '@codemirror/lang-css': 6.2.1
-      '@codemirror/lang-html': 6.4.7
-      '@codemirror/lang-java': 6.0.1
-      '@codemirror/lang-javascript': 6.2.1
-      '@codemirror/lang-json': 6.0.1
-      '@codemirror/lang-less': 6.0.1
-      '@codemirror/lang-markdown': 6.2.3
-      '@codemirror/lang-python': 6.1.3
-      '@codemirror/lang-sass': 6.0.2
-      '@codemirror/lang-sql': 6.5.4
-      '@codemirror/lang-vue': 0.1.2
-      '@codemirror/language-data': 6.3.1
-      '@uiw/codemirror-extensions-color': 4.21.21_@codemirror+language@6.9.3
-      '@uiw/react-codemirror': 4.21.21_p5bhg6t6c3ycw2fltyt7pc52lm
-      antd: 5.12.4_biqbaboplfbrettd7655fr4n2y
-      code-example: 3.3.7
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    transitivePeerDependencies:
-      - '@codemirror/language'
-      - '@codemirror/state'
-      - '@codemirror/view'
-    dev: false
-
-  /@react-admin/pro-codemirror/0.0.4_mukmbv7oyyevxtknexkknbmihq:
+  /@react-admin/pro-codemirror/0.0.4_5jiz25346anej3tsllgy7kmzp4:
     resolution: {integrity: sha512-DAZHJr+jRwb33OV3LEGq9Vp9vEm3raYwocxV0dC2AbLFjoCO22Pn8hxXzfz/oRTnbwcprVi2hSx5M0EkfKkxuA==}
     peerDependencies:
       antd: '>=5.11.2'
@@ -1772,8 +1700,8 @@ packages:
       '@codemirror/lang-sql': 6.5.4
       '@codemirror/lang-vue': 0.1.2
       '@codemirror/language-data': 6.3.1
-      '@uiw/codemirror-extensions-color': 4.21.21_@codemirror+language@6.9.3
-      '@uiw/react-codemirror': 4.21.21_p5bhg6t6c3ycw2fltyt7pc52lm
+      '@uiw/codemirror-extensions-color': 4.21.21
+      '@uiw/react-codemirror': 4.21.21_upe4mkgms5svhckzol4coibmfi
       antd: 5.12.4_biqbaboplfbrettd7655fr4n2y
       code-example: 3.3.7
       react: 18.2.0
@@ -1784,7 +1712,7 @@ packages:
       - '@codemirror/view'
     dev: false
 
-  /@react-admin/pro-components/0.0.35_rycpdagjc5c7hv3pcl6p33xqay:
+  /@react-admin/pro-components/0.0.35_hdupokltvgfghoukbp6vqumcwi:
     resolution: {integrity: sha512-hNoWuaDsHUQXk/ebVDBIU+ovv6aY6ExZehU8aOE8Ssnl2u2BjTynZYHt031FwXPZhT7z1Sau9LwYYE0rdpzAEQ==}
     peerDependencies:
       antd: '>=5.11.2'
@@ -1793,7 +1721,7 @@ packages:
       react-dom: '>=18.2.0'
     dependencies:
       '@babel/runtime': 7.23.6
-      '@react-admin/pro-codemirror': 0.0.4_mukmbv7oyyevxtknexkknbmihq
+      '@react-admin/pro-codemirror': 0.0.4_5jiz25346anej3tsllgy7kmzp4
       '@react-admin/pro-form': 0.0.6_63lrtqdjhpsagiq37bvjejudfu
       '@react-admin/pro-scroll-select': 0.0.3_yeibuj6nwigsyeabk5klqgjz7e
       '@react-admin/pro-spin': 0.0.5_5jiz25346anej3tsllgy7kmzp4
@@ -2430,12 +2358,10 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@uiw/codemirror-extensions-basic-setup/4.21.21_@codemirror+language@6.9.3:
+  /@uiw/codemirror-extensions-basic-setup/4.21.21:
     resolution: {integrity: sha512-+0i9dPrRSa8Mf0CvyrMvnAhajnqwsP3IMRRlaHDRgsSGL8igc4z7MhvUPn+7cWFAAqWzQRhMdMSWzo6/TEa3EA==}
-    peerDependencies:
-      '@codemirror/language': '>=6.0.0'
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/commands': 6.3.2
       '@codemirror/language': 6.9.3
       '@codemirror/lint': 6.4.2
@@ -2444,22 +2370,22 @@ packages:
       '@codemirror/view': 6.22.3
     dev: false
 
-  /@uiw/codemirror-extensions-color/4.21.21_@codemirror+language@6.9.3:
+  /@uiw/codemirror-extensions-color/4.21.21:
     resolution: {integrity: sha512-NB1uEdASjbCT29cd/GoysvLh9jdu4hc6Y0udEzj03blhHFspuo/+dIXcCwHG/ND3FYMfcMsmqYzBppYq214gSQ==}
     peerDependencies:
       '@codemirror/language': '>=6.0.0'
       '@codemirror/state': '>=6.0.0'
       '@codemirror/view': '>=6.0.0'
     dependencies:
-      '@codemirror/language': 6.9.3
       colors-named: 1.0.2
       colors-named-hex: 1.0.2
       hsl-matcher: 1.2.4
     dev: false
 
-  /@uiw/react-codemirror/4.21.21_p5bhg6t6c3ycw2fltyt7pc52lm:
+  /@uiw/react-codemirror/4.21.21_upe4mkgms5svhckzol4coibmfi:
     resolution: {integrity: sha512-PaxBMarufMWoR0qc5zuvBSt76rJ9POm9qoOaJbqRmnNL2viaF+d+Paf2blPSlm1JSnqn7hlRjio+40nZJ9TKzw==}
     peerDependencies:
+      '@babel/runtime': '>=7.11.0'
       '@codemirror/view': '>=6.0.0'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -2468,12 +2394,10 @@ packages:
       '@codemirror/commands': 6.3.2
       '@codemirror/state': 6.3.3
       '@codemirror/theme-one-dark': 6.1.2
-      '@uiw/codemirror-extensions-basic-setup': 4.21.21_@codemirror+language@6.9.3
+      '@uiw/codemirror-extensions-basic-setup': 4.21.21
       codemirror: 6.0.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    transitivePeerDependencies:
-      - '@codemirror/language'
     dev: false
 
   /@umijs/route-utils/4.0.1:
@@ -2895,7 +2819,7 @@ packages:
   /codemirror/6.0.1:
     resolution: {integrity: sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==}
     dependencies:
-      '@codemirror/autocomplete': 6.11.1_@codemirror+language@6.9.3
+      '@codemirror/autocomplete': 6.11.1
       '@codemirror/commands': 6.3.2
       '@codemirror/language': 6.9.3
       '@codemirror/lint': 6.4.2
