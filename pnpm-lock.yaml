@@ -19,7 +19,7 @@ specifiers:
   '@codemirror/language': ^6.9.3
   '@codemirror/language-data': ^6.3.1
   '@react-admin/pro-codemirror': ^0.0.2
-  '@react-admin/pro-components': ^0.0.30
+  '@react-admin/pro-components': ^0.0.32
   '@react-admin/pro-input': ^0.0.11
   '@react-admin/pro-utils': ^0.0.12
   '@reduxjs/toolkit': ^1.9.7
@@ -90,7 +90,7 @@ dependencies:
   '@codemirror/language': 6.9.3
   '@codemirror/language-data': 6.3.1
   '@react-admin/pro-codemirror': 0.0.2_uyiuph7h22ta23i5anwz5gr3zy
-  '@react-admin/pro-components': 0.0.30_wtomq7apng5xbgesuqwrxmn7uy
+  '@react-admin/pro-components': 0.0.32_wtomq7apng5xbgesuqwrxmn7uy
   '@react-admin/pro-input': 0.0.11_ltn6m564b52q325zgcrkzmosbu
   '@react-admin/pro-utils': 0.0.12_nqmtvd27p56owmujr3xhhb4eee
   '@reduxjs/toolkit': 1.9.7_reiadaay42xu3uk4bvhmtbk5mu
@@ -1754,8 +1754,40 @@ packages:
       - '@codemirror/view'
     dev: false
 
-  /@react-admin/pro-components/0.0.30_wtomq7apng5xbgesuqwrxmn7uy:
-    resolution: {integrity: sha512-ClQ3z23CUngiW2YN4et4mwCVCu3hFFLrA6YZDlw2zkdmOladYupJlSg3OubviilrmvUenSZWxpOTQQ3z74ivlA==}
+  /@react-admin/pro-codemirror/0.0.4_uyiuph7h22ta23i5anwz5gr3zy:
+    resolution: {integrity: sha512-DAZHJr+jRwb33OV3LEGq9Vp9vEm3raYwocxV0dC2AbLFjoCO22Pn8hxXzfz/oRTnbwcprVi2hSx5M0EkfKkxuA==}
+    peerDependencies:
+      antd: '>=5.11.2'
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@codemirror/lang-css': 6.2.1
+      '@codemirror/lang-html': 6.4.7
+      '@codemirror/lang-java': 6.0.1
+      '@codemirror/lang-javascript': 6.2.1
+      '@codemirror/lang-json': 6.0.1
+      '@codemirror/lang-less': 6.0.1
+      '@codemirror/lang-markdown': 6.2.3
+      '@codemirror/lang-python': 6.1.3
+      '@codemirror/lang-sass': 6.0.2
+      '@codemirror/lang-sql': 6.5.4
+      '@codemirror/lang-vue': 0.1.2
+      '@codemirror/language-data': 6.3.1
+      '@uiw/codemirror-extensions-color': 4.21.21_@codemirror+language@6.9.3
+      '@uiw/react-codemirror': 4.21.21_p5bhg6t6c3ycw2fltyt7pc52lm
+      antd: 5.12.2_biqbaboplfbrettd7655fr4n2y
+      code-example: 3.3.7
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    transitivePeerDependencies:
+      - '@codemirror/language'
+      - '@codemirror/state'
+      - '@codemirror/view'
+    dev: false
+
+  /@react-admin/pro-components/0.0.32_wtomq7apng5xbgesuqwrxmn7uy:
+    resolution: {integrity: sha512-lyk2odxfE1qgYKp+OgnQVpGaYhzP1sAXRJKuMMr2jeYesFslIVuFmNkE847kph+THIg/43IvwvxbOv4w6T0yzw==}
     peerDependencies:
       antd: '>=5.11.2'
       lodash: '>=4.17.21'
@@ -1763,15 +1795,13 @@ packages:
       react-dom: '>=18.2.0'
     dependencies:
       '@babel/runtime': 7.23.6
-      '@react-admin/pro-codemirror': 0.0.2_uyiuph7h22ta23i5anwz5gr3zy
+      '@react-admin/pro-codemirror': 0.0.4_uyiuph7h22ta23i5anwz5gr3zy
       '@react-admin/pro-form': 0.0.3_7vhrwjqjrte6fudw4x7csunaxq
       '@react-admin/pro-input': 0.0.11_ltn6m564b52q325zgcrkzmosbu
-      '@react-admin/pro-page': 0.0.4_ltn6m564b52q325zgcrkzmosbu
       '@react-admin/pro-scroll-select': 0.0.3_2d4s57g45n6ojgy7l2vtrwxuwa
       '@react-admin/pro-select': 0.0.10_7vhrwjqjrte6fudw4x7csunaxq
       '@react-admin/pro-spin': 0.0.5_ltn6m564b52q325zgcrkzmosbu
-      '@react-admin/pro-table': 0.0.4_nqmtvd27p56owmujr3xhhb4eee
-      '@react-admin/pro-table-page': 0.0.5_nqmtvd27p56owmujr3xhhb4eee
+      '@react-admin/pro-table-page': 0.0.6_nqmtvd27p56owmujr3xhhb4eee
       '@react-admin/pro-upload': 0.0.5_nqmtvd27p56owmujr3xhhb4eee
       '@react-admin/pro-utils': 0.0.12_nqmtvd27p56owmujr3xhhb4eee
       antd: 5.12.2_biqbaboplfbrettd7655fr4n2y
@@ -1807,19 +1837,6 @@ packages:
 
   /@react-admin/pro-input/0.0.11_ltn6m564b52q325zgcrkzmosbu:
     resolution: {integrity: sha512-yL8TYB9OMrzBb7W4/6SyzTLsqysLBZzgHqexMZDc9OVNJguB7L8YbtHoG7uK6rVnf6yAjIO3kqQ5vF9Y1YOrlg==}
-    peerDependencies:
-      antd: '>=5.11.2'
-      react: '>=18.2.0'
-      react-dom: '>=18.2.0'
-    dependencies:
-      '@babel/runtime': 7.23.6
-      antd: 5.12.2_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /@react-admin/pro-page/0.0.4_ltn6m564b52q325zgcrkzmosbu:
-    resolution: {integrity: sha512-phjQN1YMxqMTfL0sL5YXuszwfzCdLMHIB60miRm6vs5SM/gQ1/Lzpsi13uwN2gDkbV8m7ThACEl8vJU7OLh3Dg==}
     peerDependencies:
       antd: '>=5.11.2'
       react: '>=18.2.0'
@@ -1878,30 +1895,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@react-admin/pro-table-page/0.0.5_nqmtvd27p56owmujr3xhhb4eee:
-    resolution: {integrity: sha512-i3ugDC7QOaJITfj7fdHxzKsXR7muBkNR2POJqazDtD2ZYNbOipl8hsS6q0pNBOgIvYdBO1H6kmItnxW8Vs72Zw==}
-    peerDependencies:
-      antd: '>=5.11.2'
-      lodash: '>=4.17.21'
-      react: '>=18.2.0'
-      react-dom: '>=18.2.0'
-    dependencies:
-      '@babel/runtime': 7.23.6
-      '@react-admin/pro-page': 0.0.4_ltn6m564b52q325zgcrkzmosbu
-      '@react-admin/pro-table': 0.0.4_nqmtvd27p56owmujr3xhhb4eee
-      antd: 5.12.2_biqbaboplfbrettd7655fr4n2y
-      lodash: 4.17.21
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    transitivePeerDependencies:
-      - axios
-      - dayjs
-      - immer
-      - use-immer
-    dev: false
-
-  /@react-admin/pro-table/0.0.4_nqmtvd27p56owmujr3xhhb4eee:
-    resolution: {integrity: sha512-8hivhd/FPpAShYSN02/3zQCs4b16z15+fI4X2Uv8EgPgoXzQqgo8n14T4cCUzvYd83+nRpH4JynDeUvXG/iy7A==}
+  /@react-admin/pro-table-page/0.0.6_nqmtvd27p56owmujr3xhhb4eee:
+    resolution: {integrity: sha512-N5TCQj/0HVfqVSegnk/9L7tMkL1MPXhGF9/tiV7E6kTltRlMqoCTbxDt54XGMJs2V6vdm7jMncdKyEevLwB3AA==}
     peerDependencies:
       antd: '>=5.11.2'
       lodash: '>=4.17.21'

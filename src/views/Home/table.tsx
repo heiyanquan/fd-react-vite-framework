@@ -1,7 +1,7 @@
 import React from 'react'
 import { Space, Tag } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
-import { HsAdminTable } from 'react-admin'
+import { HsAdminTable } from '@react-admin/pro-components'
 
 interface DataType {
   key: string

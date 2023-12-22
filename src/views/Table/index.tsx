@@ -3,7 +3,7 @@ import './style.less'
 import { usePage } from '@/hooks/useTable'
 import { Button } from 'antd'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
-import HsAdminTablePage from '@/components/HsAdminTablePage'
+import { HsAdminTablePage, HsAdminTable, HsAdminPage } from '@react-admin/pro-components'
 
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
@@ -38,6 +38,8 @@ const TablePage: React.FC = () => {
       <Button type="primary">reset Button</Button>
       <br />
       <HsAdminTablePage columns={columns} rowKey="id" dataSource={dataSource} pagination={pagination}></HsAdminTablePage>
+      <HsAdminTable columns={columns} rowKey="id" dataSource={dataSource} pagination={false}></HsAdminTable>
+      <HsAdminPage {...pagination} />
     </>
   )
 }
