@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './style.less'
 import { setItem } from '@/utils/storage'
 import { TOKEN, USERRESULT } from '@/utils/constant'
-import { codeGetToken, getUserInfo, getAllPlatform } from '@/api/login'
+import { codeGetToken, getUserInfo } from '@/api/login'
 import { useRef } from 'react'
 
 export default function Login() {
@@ -20,8 +20,7 @@ export default function Login() {
     }).then((res) => {
       setItem(TOKEN, res.access_token)
       const p1 = getUserInfo()
-      const p2 = getAllPlatform()
-      Promise.all([p1, p2])
+      Promise.all([p1])
         .then((res) => {
           setItem(USERRESULT, res[0])
           navigate('/')
