@@ -1,20 +1,27 @@
-import React, { useEffect } from 'react'
-import { HsAdminInput, HsAdminScrollSelect } from '@react-admin/pro-components'
+import React, { useState } from 'react'
+import { HsAdminScrollSelect } from '@react-admin/pro-components'
 import { getAllUserList } from '@/api/common'
 import { Spin } from 'react-company'
+import './style.less'
+import { Resizable } from 'react-resizable'
+import 'react-resizable/css/styles.css'
 
 const App: React.FC = () => {
-  useEffect(() => {}, [])
+  const [state, setState] = useState({ width: 200, height: 200 })
+  const onResize = (_event: any, { size }: any) => {
+    setState({ width: size.width, height: size.height })
+  }
 
   return (
-    <div>
-      Hello dumi!
-      <HsAdminInput defaultValue="Hello dumi!" />
+    <div className="home-page-wrapper">
       <HsAdminScrollSelect request={getAllUserList} style={{ width: 240 }}></HsAdminScrollSelect>
       <br />
-      <br />
       <Spin name="name1" />
-      <Spin name="正在加载中" />
+      <Resizable height={state.height} width={state.width} onResize={onResize}>
+        <div className="box1" style={{ width: state.width + 'px', height: state.height + 'px' }}>
+          <span>Contents</span>
+        </div>
+      </Resizable>
     </div>
   )
 }
