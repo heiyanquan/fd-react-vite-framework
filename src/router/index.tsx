@@ -9,6 +9,7 @@ const Home = lazy(() => import('@/views/Home'))
 const Router = lazy(() => import('@/views/Router'))
 const Table = lazy(() => import('@/views/Table'))
 const ProTable = lazy(() => import('@/views/ProTable'))
+const Table2 = lazy(() => import('@/views/Table2'))
 const Form = lazy(() => import('@/views/Form'))
 const Hooks = lazy(() => import('@/views/Hooks'))
 const HooksMemo = lazy(() => import('@/views/Hooks/Memo'))
@@ -75,6 +76,12 @@ const routeChildren: CustomRouteConfig[] = [
     name: 'protable',
     path: 'protable',
     element: withLoading(<ProTable />)
+  },
+  {
+    belong: 'sub1',
+    name: 'table2',
+    path: 'table2',
+    element: withLoading(<Table2 />)
   },
   {
     belong: 'sub1',

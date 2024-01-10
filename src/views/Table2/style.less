@@ -1,0 +1,33 @@
+.resizeTable {
+  .react-resizable {
+    position: relative;
+    background-clip: padding-box;
+  }
+
+  .react-resizable-handle {
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    bottom: 0;
+    right: -5px;
+    cursor: col-resize;
+    background-image: none;
+    z-index: 1;
+  }
+
+  .ant-table-filter-column,
+  .ant-table-column-sorters {
+    display: flex;
+    /* co1umn 从上到下*/
+    align-items: center;
+    /* center代表水平方向 */
+    justify-content: space-around;
+    min-width: 70px;
+  }
+
+  .ant-table-thead > tr > th .ant-table-column-sorter {
+    margin-top: -21px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
