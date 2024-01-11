@@ -12,21 +12,18 @@ const textEllipsis = {
 }
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
-  const [columns, setColumns] = useState([
+  const [columns, setColumns] = useState<any[]>([
     {
       title: '表编码',
-      dataIndex: 'uni_code',
-      width: 100
+      dataIndex: 'uni_code'
     },
     {
       title: '表名（中文）',
-      dataIndex: 'name',
-      width: 110
+      dataIndex: 'name'
     },
     {
       title: '描述',
-      dataIndex: 'description',
-      width: 120
+      dataIndex: 'description'
     }
   ])
 
@@ -48,10 +45,13 @@ const TablePage: React.FC = () => {
         <div style={{ width: col.width, ...textEllipsis }}>{text}</div>
       )
     },
-    onHeaderCell: (column: { width: any }) => ({
-      width: column.width ?? 80,
-      onResize: handleResize(index)
-    })
+    onHeaderCell: (column: { width: any }) => {
+      console.log('[ column ] >', column)
+      return {
+        width: column.width ?? 80,
+        onResize: handleResize(index)
+      }
+    }
   }))
 
   const doRequest = () => {
@@ -60,6 +60,18 @@ const TablePage: React.FC = () => {
       page_size: pagination.pageSize
     }).then((res) => {
       setDataSource(res.items)
+      Promise.resolve().then(() => {
+        setColumns((prev) => {
+          const tableThead = document.getElementsByClassName('ant-table-thead')
+          const trChildren = tableThead[0].children
+          const tdList = trChildren[0].children
+          for (const [key, value] of [...tdList].entries()) {
+            console.log('[ value.clientWidth ] >', value.clientWidth)
+            prev[key].width = value.clientWidth
+          }
+          return [...prev]
+        })
+      })
       return res
     })
   }

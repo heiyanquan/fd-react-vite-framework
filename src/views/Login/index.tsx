@@ -4,31 +4,35 @@ import './style.less'
 import { setItem } from '@/utils/storage'
 import { TOKEN, USERRESULT } from '@/utils/constant'
 import { codeGetToken, getUserInfo } from '@/api/login'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function Login() {
   const navigate = useNavigate()
   const hasCode = useRef(false)
 
-  if (location.href.includes('code=')) {
-    hasCode.current = true
-    const originQuery: any = location.search!.split('?')[1].split('&')
-    const queryArr = originQuery.map((item: any) => item.split('='))
-    const query: any = new Map(queryArr)
-    codeGetToken({
-      code: query.get('code')
-    }).then((res) => {
-      setItem(TOKEN, res.access_token)
-      const p1 = getUserInfo()
-      Promise.all([p1])
-        .then((res) => {
-          setItem(USERRESULT, res[0])
-          navigate('/')
-          message.success('登录成功')
-        })
-        .finally(() => {})
-    })
-  }
+  useEffect(() => {
+    if (location.href.includes('code=')) {
+      hasCode.current = true
+      const originQuery: any = location.search!.split('?')[1].split('&')
+      const queryArr = originQuery.map((item: any) => item.split('='))
+      const query: any = new Map(queryArr)
+      codeGetToken({
+        code: query.get('code')
+      }).then((res) => {
+        setItem(TOKEN, res.access_token)
+        const p1 = getUserInfo()
+        Promise.all([p1])
+          .then((res) => {
+            setItem(USERRESULT, res[0])
+            // location.search = ''
+            navigate('/home')
+            message.success('登录成功')
+          })
+          .finally(() => {})
+      })
+    }
+  }, [])
+
   const submit = () => {
     const paramsMap: any = new Map([
       ['client_id', '32248183-5707-42a6-a761-89eebebbdc1f'],
