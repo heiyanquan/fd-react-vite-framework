@@ -1,7 +1,10 @@
 import { lazy, Suspense } from 'react'
-import { createBrowserRouter, Navigate, RouteObject, useRouteError } from 'react-router-dom'
+import { createBrowserRouter, Navigate, redirect, RouteObject, useRouteError } from 'react-router-dom'
 import { message, Spin } from 'antd'
 import { AppstoreOutlined } from '@ant-design/icons'
+import { setItem } from '@/utils/storage'
+import { TOKEN, USERRESULT } from '@/utils/constant'
+import { codeGetToken, getUserInfo } from '@/api/login'
 
 const Layout = lazy(() => import('@/views/Layout'))
 const Login = lazy(() => import('@/views/Login'))
@@ -152,7 +155,7 @@ const routeChildren: CustomRouteConfig[] = [
 ]
 
 function ErrorBoundary() {
-  const error = useRouteError()
+  const error: any = useRouteError()
   console.error(error.message)
   if (error.message?.includes('Failed to fetch dynamically imported module')) {
     message.error('页面已发新版，请强刷页面或清空缓存')
@@ -170,7 +173,25 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: withLoading(<Login />)
+    element: withLoading(<Login />),
+    loader: async ({ request }) => {
+      if (request.url.includes('code=')) {
+        const originQuery: any = location.search!.split('?')[1].split('&')
+        const queryArr = originQuery.map((item: any) => item.split('='))
+        const query: any = new Map(queryArr)
+        return codeGetToken({
+          code: query.get('code')
+        }).then((res) => {
+          setItem(TOKEN, res.access_token)
+          return getUserInfo().then((res) => {
+            setItem(USERRESULT, res[0])
+            return redirect('/')
+          })
+        })
+      } else {
+        return null
+      }
+    }
   }
 ])
 
