@@ -46,7 +46,6 @@ const TablePage: React.FC = () => {
       )
     },
     onHeaderCell: (column: { width: any }) => {
-      console.log('[ column ] >', column)
       return {
         width: column.width ?? 80,
         onResize: handleResize(index)
@@ -66,8 +65,10 @@ const TablePage: React.FC = () => {
           const trChildren = tableThead[0].children
           const tdList = trChildren[0].children
           for (const [key, value] of [...tdList].entries()) {
-            console.log('[ value.clientWidth ] >', value.clientWidth)
-            prev[key].width = value.clientWidth
+            const computedStyles = window.getComputedStyle(value)
+            const paddingLeft = parseFloat(computedStyles['paddingLeft'])
+            const paddingRight = parseFloat(computedStyles['paddingRight'])
+            prev[key].width = value.clientWidth - paddingLeft - paddingRight
           }
           return [...prev]
         })
