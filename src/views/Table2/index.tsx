@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.less'
 import { usePage } from '@/hooks/useTable'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
@@ -59,10 +59,26 @@ const TablePage: React.FC = () => {
       page_size: pagination.pageSize
     }).then((res) => {
       setDataSource(res.items)
+      return res
+    })
+  }
+  const { pagination } = usePage(doRequest)
+
+  useEffect(() => {
+    if (dataSource.length) {
       Promise.resolve().then(() => {
         setColumns((prev) => {
-          const tableThead = document.getElementsByClassName('ant-table-thead')
-          const trChildren = tableThead[0].children
+          let tableThead: any
+          const id = 'J_table1'
+          if (document.getElementById(id)) {
+            tableThead = document.querySelector(`#${id} .ant-table-thead`)
+          } else {
+            tableThead = document.getElementsByClassName('ant-table-thead')[0]
+          }
+          if (!tableThead) {
+            return prev
+          }
+          const trChildren = tableThead.children
           const tdList = trChildren[0].children
           for (const [key, value] of [...tdList].entries()) {
             const computedStyles = window.getComputedStyle(value)
@@ -73,14 +89,13 @@ const TablePage: React.FC = () => {
           return [...prev]
         })
       })
-      return res
-    })
-  }
-  const { pagination } = usePage(doRequest)
+    }
+  }, [dataSource])
 
   return (
     <div className="resizeTable">
       <Table
+        id="J_table1"
         columns={mergeColumns}
         rowKey="id"
         dataSource={dataSource}
