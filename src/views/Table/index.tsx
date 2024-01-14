@@ -1,14 +1,13 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import './style.less'
 import { usePage } from '@/hooks/useTable'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
 import { HsAdminTablePage } from '@react-admin/pro-components'
-import ResizableTitle from './ResizableTitle'
 import { Table } from 'antd'
 
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
-  const [columns, setColumns] = useState([
+  const columns = [
     {
       title: '表编码',
       dataIndex: 'uni_code',
@@ -24,38 +23,7 @@ const TablePage: React.FC = () => {
       dataIndex: 'description',
       width: 120
     }
-  ])
-
-  const handleResize =
-    (info: { title?: string; dataIndex: any }) =>
-    (_e: any, { size }: any) => {
-      setColumns((values) => {
-        return values.map((item) => {
-          if (item.dataIndex === info.dataIndex) {
-            console.log('[ info.dataIndex ] >', info.dataIndex, size)
-            return {
-              ...item,
-              width: size.width
-            }
-          } else {
-            return item
-          }
-        })
-      })
-    }
-  const columnsList = useMemo(() => {
-    return columns.map((col) => {
-      return {
-        ...col,
-        onHeaderCell: (column: { width: any }) => {
-          return {
-            width: column.width,
-            onResize: handleResize(col)
-          }
-        }
-      }
-    })
-  }, [columns])
+  ]
 
   const doRequest = () => {
     return getPlanningSubclassList({
@@ -70,26 +38,8 @@ const TablePage: React.FC = () => {
 
   return (
     <>
-      <Table
-        columns={columnsList}
-        rowKey="id"
-        dataSource={dataSource}
-        pagination={false}
-        components={{
-          header: {
-            cell: ResizableTitle
-          }
-        }}></Table>
-      <HsAdminTablePage
-        columns={columnsList}
-        rowKey="id"
-        dataSource={dataSource}
-        pagination={pagination}
-        components={{
-          header: {
-            cell: ResizableTitle
-          }
-        }}></HsAdminTablePage>
+      <Table columns={columns} rowKey="id" dataSource={dataSource} pagination={false}></Table>
+      <HsAdminTablePage columns={columns} rowKey="id" dataSource={dataSource} pagination={pagination}></HsAdminTablePage>
     </>
   )
 }
