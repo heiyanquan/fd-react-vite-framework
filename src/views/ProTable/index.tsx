@@ -1,239 +1,108 @@
-import { EllipsisOutlined, PlusOutlined } from '@ant-design/icons'
-import type { ActionType, ProColumns } from '@ant-design/pro-components'
-import { ProTable, TableDropdown } from '@ant-design/pro-components'
-import { Button, Dropdown, Space, Tag } from 'antd'
-import { useRef } from 'react'
-import request from 'umi-request'
-export const waitTimePromise = async (time: number = 100) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true)
-    }, time)
+import type { ColumnsState, ProColumns } from '@ant-design/pro-components'
+import { ProTable } from '@ant-design/pro-components'
+import { useState } from 'react'
+
+const valueEnum = {
+  0: 'close',
+  1: 'running',
+  2: 'online',
+  3: 'error'
+}
+
+export type TableListItem = {
+  key: number
+  name: string
+  status: string
+  updatedAt: number
+  createdAt: number
+  money: number
+}
+const tableListDataSource: TableListItem[] = []
+
+for (let i = 0; i < 2; i += 1) {
+  tableListDataSource.push({
+    key: i,
+    name: `TradeCode ${i}`,
+    status: valueEnum[((Math.floor(Math.random() * 10) % 4) + '') as '0'],
+    updatedAt: Date.now() - Math.floor(Math.random() * 1000),
+    createdAt: Date.now() - Math.floor(Math.random() * 2000),
+    money: Math.floor(Math.random() * 2000) * i
   })
 }
 
-export const waitTime = async (time: number = 100) => {
-  await waitTimePromise(time)
-}
-
-type GithubIssueItem = {
-  url: string
-  id: number
-  number: number
-  title: string
-  labels: {
-    name: string
-    color: string
-  }[]
-  state: string
-  comments: number
-  created_at: string
-  updated_at: string
-  closed_at?: string
-}
-
-const columns: ProColumns<GithubIssueItem>[] = [
-  {
-    dataIndex: 'index',
-    valueType: 'indexBorder',
-    width: 48
-  },
+const columns: ProColumns<TableListItem>[] = [
   {
     title: '标题',
-    dataIndex: 'title',
-    copyable: true,
-    ellipsis: true,
-    tip: '标题过长会自动收缩',
-    formItemProps: {
-      rules: [
-        {
-          required: true,
-          message: '此项为必填项'
-        }
-      ]
-    }
+    dataIndex: 'name',
+    key: 'name'
   },
   {
-    disable: true,
     title: '状态',
-    dataIndex: 'state',
+    dataIndex: 'status',
+    initialValue: 'all',
     filters: true,
     onFilter: true,
-    ellipsis: true,
     valueType: 'select',
     valueEnum: {
-      all: { text: '超长'.repeat(50) },
-      open: {
-        text: '未解决',
-        status: 'Error'
-      },
-      closed: {
-        text: '已解决',
-        status: 'Success',
-        disabled: true
-      },
-      processing: {
-        text: '解决中',
-        status: 'Processing'
-      }
+      all: { text: '全部', status: 'Default' },
+      close: { text: '关闭', status: 'Default' },
+      running: { text: '运行中', status: 'Processing' },
+      online: { text: '已上线', status: 'Success' },
+      error: { text: '异常', status: 'Error' }
     }
   },
   {
-    disable: true,
-    title: '标签',
-    dataIndex: 'labels',
-    search: false,
-    renderFormItem: (_, { defaultRender }) => {
-      return defaultRender(_)
-    },
-    render: (_, record) => (
-      <Space>
-        {record.labels.map(({ name, color }) => (
-          <Tag color={color} key={name}>
-            {name}
-          </Tag>
-        ))}
-      </Space>
-    )
-  },
-  {
-    title: '创建时间',
-    key: 'showTime',
-    dataIndex: 'created_at',
+    title: '更新时间',
+    key: 'since2',
+    dataIndex: 'createdAt',
     valueType: 'date',
-    sorter: true,
-    hideInSearch: true
+    hideInSetting: true
   },
-  {
-    title: '创建时间',
-    dataIndex: 'created_at',
-    valueType: 'dateRange',
-    hideInTable: true,
-    search: {
-      transform: (value) => {
-        return {
-          startTime: value[0],
-          endTime: value[1]
-        }
-      }
-    }
-  },
+
   {
     title: '操作',
-    valueType: 'option',
     key: 'option',
-    render: (text, record, _, action) => [
-      <a
-        key="editable"
-        onClick={() => {
-          action?.startEditable?.(record.id)
-        }}>
-        编辑
-      </a>,
-      <a href={record.url} target="_blank" rel="noopener noreferrer" key="view">
-        查看
-      </a>,
-      <TableDropdown
-        key="actionGroup"
-        onSelect={() => action?.reload()}
-        menus={[
-          { key: 'copy', name: '复制' },
-          { key: 'delete', name: '删除' }
-        ]}
-      />
-    ]
+    width: 120,
+    valueType: 'option',
+    render: () => [<a key="1">操作</a>, <a key="2">删除</a>]
   }
 ]
 
 export default () => {
-  const actionRef = useRef<ActionType>()
+  const [columnsStateMap, setColumnsStateMap] = useState<Record<string, ColumnsState>>({
+    name: {
+      show: true,
+      order: 2
+    }
+  })
   return (
-    <ProTable<GithubIssueItem>
+    <ProTable<TableListItem, { keyWord?: string }>
       columns={columns}
-      actionRef={actionRef}
-      cardBordered
-      request={async (params, sort, filter) => {
-        console.log(sort, filter)
-        await waitTime(2000)
-        return request<{
-          data: GithubIssueItem[]
-        }>('https://proapi.azurewebsites.net/github/issues', {
-          params
-        })
-      }}
-      editable={{
-        type: 'multiple'
-      }}
-      columnsState={{
-        persistenceKey: 'pro-table-singe-demos',
-        persistenceType: 'localStorage',
-        defaultValue: {
-          option: { fixed: 'right', disable: true }
-        },
-        onChange(value) {
-          console.log('value: ', value)
-        }
-      }}
-      rowKey="id"
-      search={{
-        labelWidth: 'auto'
-      }}
-      options={{
-        setting: {
-          listsHeight: 400
-        }
-      }}
-      form={{
-        // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
-        syncToUrl: (values, type) => {
-          if (type === 'get') {
-            return {
-              ...values,
-              created_at: [values.startTime, values.endTime]
+      request={(params) =>
+        Promise.resolve({
+          data: tableListDataSource.filter((item) => {
+            if (!params?.keyWord) {
+              return true
             }
-          }
-          return values
-        }
+            if (item.name.includes(params?.keyWord) || item.status.includes(params?.keyWord)) {
+              return true
+            }
+            return false
+          }),
+          success: true
+        })
+      }
+      options={{
+        search: true
       }}
-      pagination={{
-        pageSize: 5,
-        onChange: (page) => console.log(page)
+      rowKey="key"
+      columnsState={{
+        value: columnsStateMap,
+        onChange: setColumnsStateMap
       }}
+      search={false}
       dateFormatter="string"
-      headerTitle="高级表格"
-      toolBarRender={() => [
-        <Button
-          key="button"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            actionRef.current?.reload()
-          }}
-          type="primary">
-          新建
-        </Button>,
-        <Dropdown
-          key="menu"
-          menu={{
-            items: [
-              {
-                label: '1st item',
-                key: '1'
-              },
-              {
-                label: '2nd item',
-                key: '1'
-              },
-              {
-                label: '3rd item',
-                key: '1'
-              }
-            ]
-          }}>
-          <Button>
-            <EllipsisOutlined />
-          </Button>
-        </Dropdown>
-      ]}
+      headerTitle="受控模式"
     />
   )
 }
