@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "lint": "vite lint src",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.tsx\" \"*json\" \"*.config.js\" \"*.eslintrc.js\"",
-    "clear": "rimraf node_modules && rimraf dist"
+    "clear": "rimraf node_modules && rimraf dist",
+    "version": "node version.js"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -71,5 +72,8 @@
     "vite": "^5.0.11",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-inspect": "^0.8.1"
+  },
+  "gitHooks": {
+    "pre-commit": "npm run version"
   }
 }
