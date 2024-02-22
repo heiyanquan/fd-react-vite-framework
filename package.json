@@ -77,5 +77,10 @@
   },
   "gitHooks": {
     "pre-commit": "npm run version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm version patch"
+    }
   }
 }
