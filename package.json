@@ -75,12 +75,10 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-inspect": "^0.8.1"
   },
-  "gitHooks": {
-    "pre-commit": "npm run version"
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm version patch"
+      "pre-commit": "npm version patch",
+      "pre-push": "npm run version"
     }
   }
 }
