@@ -3,22 +3,25 @@ import './style.less'
 import { usePage } from '@/hooks/useTable'
 import { Button } from 'antd'
 import { getPlanningSubclassList } from '@/api/planningOverview/subclass'
-import HsAdminTablePage from '@/components/HsAdminTablePage'
+import HsAdminTable from './HsAdminTable'
 
 const TablePage: React.FC = () => {
   const [dataSource, setDataSource] = useState([])
   const columns = [
     {
       title: '表编码',
-      dataIndex: 'uni_code'
+      dataIndex: 'uni_code',
+      width: 400
     },
     {
       title: '表名（中文）',
-      dataIndex: 'name'
+      dataIndex: 'name',
+      width: 400
     },
     {
-      title: '描述',
-      dataIndex: 'description'
+      title: '表名（英文）',
+      dataIndex: 'en_name',
+      width: 400
     }
   ]
 
@@ -37,7 +40,7 @@ const TablePage: React.FC = () => {
     <>
       <Button type="primary">reset Button</Button>
       <br />
-      <HsAdminTablePage columns={columns} rowKey="id" dataSource={dataSource} pagination={pagination}></HsAdminTablePage>
+      <HsAdminTable columns={columns} rowKey="id" dataSource={dataSource} pagination={false}></HsAdminTable>
     </>
   )
 }
