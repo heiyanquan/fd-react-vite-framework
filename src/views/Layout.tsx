@@ -3,8 +3,6 @@ import { Layout, Row, Dropdown, Avatar, Space, Button } from 'antd'
 import { DownOutlined, UserOutlined } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
 import Menu from '@/components/Menu/Menu'
-import { useSelector } from 'react-redux'
-import type { RootState } from '@/store'
 import './LayoutStyle.less'
 import { useEffect } from 'react'
 
@@ -12,7 +10,6 @@ const { Sider } = Layout
 
 function LayoutView() {
   const navigate = useNavigate()
-  const selectedMenuLabel = useSelector((state: RootState) => state.menu.label)
   // u should call navigate() in a React.useEffect(), not when your component is first rendered.
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -60,9 +57,7 @@ function LayoutView() {
         <Menu />
       </Sider>
       <Layout className="right-content">
-        <div className="bread-list">
-          <span>{selectedMenuLabel}</span>
-        </div>
+        <div className="bread-list"></div>
         <Outlet />
       </Layout>
     </Layout>

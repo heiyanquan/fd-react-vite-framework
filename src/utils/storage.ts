@@ -59,4 +59,3 @@ function isJSON(str: string): boolean {
     return false
   }
 }
-

@@ -2,8 +2,6 @@ import React, { useEffect, useState, memo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import type { MenuProps } from 'antd'
 import { Menu } from 'antd'
-import { useDispatch } from 'react-redux'
-import { update } from '@/store/modules/menuSlice'
 import { menuItems } from '@/router'
 
 type MenuItem = Required<MenuProps>['items'][number]
@@ -27,7 +25,6 @@ const items: MenuProps['items'] = menuItems.map((item) => {
 function MenuView() {
   const navigate = useNavigate()
   const location = useLocation()
-  const dispatch = useDispatch()
   const selectedKeys = [location.pathname]
   const [openKeys, setOpenKeys] = useState(['sub1'])
   const onOpenChange: MenuProps['onOpenChange'] = (keys: string[]) => {
@@ -37,7 +34,6 @@ function MenuView() {
     menuItems.forEach((first) => {
       first.children.forEach((second) => {
         if (second.key === location.pathname) {
-          dispatch(update(second))
           setOpenKeys([first.key])
         }
       })

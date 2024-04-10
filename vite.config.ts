@@ -1,16 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import { resolve } from 'path'
 import Inspect from 'vite-plugin-inspect'
+import { fileURLToPath, URL } from 'node:url'
+import UnoCSS from 'unocss/vite'
+import eslintPlugin from 'vite-plugin-eslint'
 
 // 路径查找
-const pathResolve = (dir) => {
-  return resolve(__dirname, dir)
+const pathResolve = (dir: string) => {
+  return fileURLToPath(new URL(dir, import.meta.url))
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), Inspect()],
+  plugins: [react(), UnoCSS(), eslintPlugin(), Inspect()],
   resolve: {
     alias: {
       '@': pathResolve('src'),

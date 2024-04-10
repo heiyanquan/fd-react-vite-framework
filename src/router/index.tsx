@@ -127,11 +127,11 @@ const routeChildren: CustomRouteConfig[] = [
     name: 'monacoEditor',
     path: 'monacoEditor',
     element: withLoading(<MonacoEditor />)
-  },
+  }
 ]
 
 function ErrorBoundary() {
-  const error = useRouteError()
+  const error: any = useRouteError()
   console.error(error.message)
   if (error.message.includes('Failed to fetch dynamically imported module')) {
     message.error('页面已发新版，请强刷页面或清空缓存')

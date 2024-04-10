@@ -5,9 +5,8 @@ import { ConfigProvider, Spin } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
+import 'virtual:uno.css'
 import 'antd/dist/reset.css'
-import { Provider } from 'react-redux'
-import { store } from './store'
 import '@/styles/index.less'
 import router from './router'
 
@@ -17,9 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <ConfigProvider locale={zhCN}>
-      <Provider store={store}>
-        <RouterProvider router={router} fallbackElement={<Spin />} />
-      </Provider>
+      <RouterProvider router={router} fallbackElement={<Spin />} />
     </ConfigProvider>
   </React.StrictMode>
 )

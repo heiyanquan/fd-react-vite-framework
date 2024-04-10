@@ -1,15 +1,31 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './modules/counterSlice'
-import menuReducer from './modules/menuSlice'
+import { create } from 'zustand'
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    menu: menuReducer
+type State = {
+  count: number
+}
+
+type Actions = {
+  increment?: (qty: number) => void
+  decrement?: (qty: number) => void
+}
+
+type Action = {
+  type: keyof Actions
+  qty: number
+}
+
+const countReducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + action.qty }
+    case 'decrement':
+      return { count: state.count - action.qty }
+    default:
+      return state
   }
-})
+}
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
+export const useCountStore = create<State & Actions>((set) => ({
+  count: 0,
+  dispatch: (action: Action) => set((state) => countReducer(state, action))
+}))
