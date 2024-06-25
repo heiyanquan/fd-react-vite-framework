@@ -14,3 +14,9 @@ declare interface labelItem {
   active?: boolean
   children?: labelItem[]
 }
+
+interface SelectOption {
+  label: string
+  value: string
+}
+declare type FilterFunc = (value: SelectOption) => boolean
