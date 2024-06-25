@@ -10,7 +10,6 @@ import '@/styles/index.less'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import router from './router'
-import { StaticMethod } from '@react-admin/pro-utils'
 
 dayjs.locale('zh-cn')
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
@@ -19,7 +18,6 @@ root.render(
     <ConfigProvider locale={zhCN}>
       <Provider store={store}>
         <App>
-          <StaticMethod />
           <RouterProvider router={router} fallbackElement={<Spin />} />
         </App>
       </Provider>
